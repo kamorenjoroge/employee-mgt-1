@@ -43,6 +43,29 @@ export interface Sale {
   status: "completed" | "pending" | "cancelled";
 }
 
+export interface ReturnedProduct {
+  productId: number;
+  productName: string;
+
+  quantityReturned: number;
+
+}
+
+export interface SaleReconciliation {
+  id: number;               // Reconciliation ID
+  saleId: number;           // 🔗 Links to original Sale.id
+  employeeId: number;
+  employeeName: string;
+
+  returnedProducts: ReturnedProduct[];
+
+  reason: "damaged" | "customer-return" | "wrong-item" | "other";
+
+  date: string;
+  status: "pending" | "approved" | "rejected";
+}
+
+
 
 
 // ==========================
@@ -135,6 +158,30 @@ export const sales: Sale[] = [
   },
 ];
 
+export const saleReconciliations: SaleReconciliation[] = [
+  {
+    id: 1,
+    saleId: 1, // This return is against Sale ID 1
+    employeeId: 1,
+    employeeName: "James Webb",
+
+    returnedProducts: [
+      {
+        productId: 2,
+        productName: "Mouse",
+        quantityReturned: 2,
+
+      
+      },
+    ],
+
+    reason: "customer-return",
+    date: "2026-02-04",
+    status: "approved",
+  },
+];
+
+
 
 // ==========================
 // Dashboard Stats
@@ -160,3 +207,4 @@ export const dashboardStats = {
     return saleSum + commissionTotal;
   }, 0),
 };
+

@@ -40,3 +40,29 @@ export interface Employee {
   status: "active" | "inactive";
   joinedDate: string;
 }
+
+
+// ==========================
+// Sales Reconciliation Types
+// ==========================
+
+export interface ReturnedProduct {
+  productId: number;
+  productName: string;
+  quantityReturned: number;
+}
+
+export interface SaleReconciliation {
+  id: number;                // Reconciliation ID
+  saleId: number;            // 🔗 Links to original Sale.id
+
+  employeeId: number;
+  employeeName: string;
+
+  returnedProducts: ReturnedProduct[];
+
+  reason: "damaged" | "customer-return" | "wrong-item" | "other";
+
+  date: string;
+  status: "pending" | "approved" | "rejected";
+}
