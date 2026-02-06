@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, Package, ShoppingCart, X } from "lucide-react";
+import { LayoutDashboard, Users, Package, ShoppingCart, X, BadgeCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -26,6 +26,11 @@ const navItems = [
     label: "Sales",
     href: "/sales",
     icon: ShoppingCart,
+  },
+  {
+    label: "Sales Reconciliation",
+    href: "/sales-reconciliation",
+    icon: BadgeCheck,
   },
 ];
 
